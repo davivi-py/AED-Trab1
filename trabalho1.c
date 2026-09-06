@@ -28,8 +28,23 @@ int busca_sequencial(const int *vetor, int P, int N){
     printf("NAO\n");
     return 0;
 }
-int busca_interativa(v,P,N){
-    printf("Vc esta em busca interativa\n");
+
+int busca_interativa(int *v, int P, int N){
+    int inicio = 0, fim = N - 1, meio;
+
+    while(inicio <= fim){
+        meio = (inicio + fim) / 2;
+        if(v[meio] == P){
+            printf("SIM\n");
+            return 1;
+        }else if(v[meio] < P){
+            inicio = meio + 1;
+        }else{
+            fim = meio - 1;
+        }
+    }
+
+    printf("NAO\n");
     return 0;
 }
 int busca_recursiva(v,P,N){

@@ -1,5 +1,3 @@
-# TRABALHO 1 - Geracao de Graficos e Tabelas a partir do resultados.csv
-# NAO eh entregue no Run.Codes - apenas para gerar material do relatorio (PIOR CASO)
 import pandas as pd
 import matplotlib.pyplot as plt
 

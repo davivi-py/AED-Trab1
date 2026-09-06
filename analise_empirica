@@ -1,5 +1,3 @@
-// TRABALHO 1 - Codigo Auxiliar de Analise (tempo e contagem de operacoes)
-// NAO eh entregue no Run.Codes - apenas para gerar dados do relatorio (PIOR CASO)
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -29,8 +27,8 @@ int busca_sequencial(int *v, int n, int p){
 int busca_iterativa(int *v, int n, int p){
     int inicio = 0, fim = n - 1, meio;
     atribuicoes += 2;
+    comparacoes++; // primeira avaliacao do while (inicio <= fim)
     while(inicio <= fim){
-        comparacoes++;
         meio = (inicio + fim) / 2;   atribuicoes++;
         comparacoes++;
         if(v[meio] == p) return 1;
@@ -40,13 +38,14 @@ int busca_iterativa(int *v, int n, int p){
         }else{
             fim = meio - 1;          atribuicoes++;
         }
+        comparacoes++; // reavaliacao do while (inclui a que causa a saida)
     }
     return 0;
 }
 
 // ---------- Algoritmo 4: Busca Binaria Recursiva ----------
 int busca_recursiva(int *v, int inicio, int fim, int p){
-    comparacoes++;
+    comparacoes++; // condicao de parada (inicio > fim), inclui a chamada final
     if(inicio > fim) return 0;
     int meio = (inicio + fim) / 2;   atribuicoes++;
     comparacoes++;

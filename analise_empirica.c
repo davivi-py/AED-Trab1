@@ -8,12 +8,13 @@ long long comparacoes, atribuicoes;
 void inversao(int *v, int n){
     int tmp;
     for(int i = 0; i < n/2; i++){
-        tmp = v[i];              atribuicoes++;
-        v[i] = v[n-1-i];         atribuicoes++;
-        v[n-1-i] = tmp;          atribuicoes++;
+        tmp = v[i];
+        v[i] = v[n-1-i];
+        v[n-1-i] = tmp;
     }
+    atribuicoes += 1 + 4*(n/2);   // i=0, mais (i++ e as 3 do corpo) por iteracao
+    comparacoes += n/2 + 1;       // cada avaliacao de i < n/2, incluindo a que encerra o laco
 }
-
 // ---------- Algoritmo 2: Busca Sequencial ----------
 int busca_sequencial(int *v, int n, int p){
     for(int i = 0; i < n; i++){
@@ -79,7 +80,7 @@ int main(){
     for(int t = 0; t < qtd_tamanhos; t++){
         int n = tamanhos[t];
         int *v = gerar_vetor(n);
-        int p_ausente = -1; // pior caso: elemento nao esta no vetor
+        int p_ausente = n; // pior caso: elemento nao esta no vetor
 
         // ---- Inversao ----
         comparacoes = 0; atribuicoes = 0;
